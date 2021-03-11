@@ -102,4 +102,8 @@ public class AdjacencySet<T> implements Graph<T>{
         }
         return inDegree;
     }
+
+    public int getWeights(int source, int adjancentVertex) {
+        return 1;
+    }
 }
