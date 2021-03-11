@@ -3,12 +3,12 @@ package Graph;
 
 import java.util.*;
 
-public class AdjancencySet implements Graph{
+public class AdjacencySet<T> implements Graph<T>{
     private List<Node> adjacentVertices= new ArrayList<>();
-    private GraphType graphType =GraphType.DIRECTED;
-    private int numberOfVertices=0;
+    private GraphType graphType ;
+    private int numberOfVertices;
 
-    public AdjancencySet(int numberOfVertices,GraphType graphType){
+    public AdjacencySet(int numberOfVertices, GraphType graphType){
         this.graphType = graphType;
         this.numberOfVertices =numberOfVertices;
         for (int i=0; i<numberOfVertices;i++){
@@ -30,8 +30,9 @@ public class AdjancencySet implements Graph{
      }
     }
 
+
     @Override
-    public List<Integer> getAdjacentVertices(int vertex) {
+    public List<T> getAdjacentVertices(int vertex) {
         List<Integer> adjacentVerticesList = new ArrayList<>(numberOfVertices);
         if (vertex<0 || vertex>=numberOfVertices ){
             throw new IllegalArgumentException("Vertex are out of bound");
@@ -68,7 +69,7 @@ public class AdjancencySet implements Graph{
             }
             System.out.println(vertex+" -->");
             visited[vertex]=1;
-            List<Integer> adjacentVertex =graph.getAdjacentVertices(vertex);
+            List<Integer> adjacentVertex = graph.getAdjacentVertices(vertex);
             for (int v: adjacentVertex){
             if(visited[v]!=1){
                 queue.add(v);
@@ -77,5 +78,28 @@ public class AdjancencySet implements Graph{
         }
 
 
+
+
+    }
+
+    public int getNumberOfVertices(){
+        return numberOfVertices;
+    }
+
+    public List<Node> getVertexList(){
+        return adjacentVertices;
+    }
+
+    public int getInDegree(int vertex){
+        int inDegree=0;
+
+        int numberOfVertex= getNumberOfVertices();
+        for (int i= 0; i<numberOfVertex;i++){
+            if(getAdjacentVertices(vertex).contains(i)){
+                inDegree++;
+            }
+
+        }
+        return inDegree;
     }
 }
