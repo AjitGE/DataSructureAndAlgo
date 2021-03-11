@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Hello {
+public class kBinaryNumbers {
     public static void main(String[] args){
         int[] arr= new int[3];
         binary(3,arr);
