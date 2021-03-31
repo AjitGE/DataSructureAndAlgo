@@ -6,7 +6,7 @@ public class QuickSort {
 
     public void quickSort(int[] array, int startIndex, int endIndex) {
 
-        if (startIndex > endIndex) {
+        if (startIndex < endIndex) {
 
 
             int partitionIndex = partition(array, startIndex, endIndex);
